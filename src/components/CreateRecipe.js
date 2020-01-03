@@ -59,6 +59,7 @@ class CreateRecipe extends React.Component {
   //handle submit on form
   //can create variables like const if only used within that method
   onSubmit = (e) => { 
+    e.preventDefault();
     this.setState(state => ({
       peepname: this.state.peepname,
       title: this.state.description,
@@ -68,6 +69,7 @@ class CreateRecipe extends React.Component {
       
     }));
     
+    console.log(this.state);
     // const recipe = {
     //   peepname: this.state.peepname,
     //   title: this.state.description,
