@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from './Navbar';
+import axios from 'axios';
 
 // function CreatePeep ()
 // {
@@ -26,6 +27,7 @@ class CreatePeep extends React.Component {
   }
 
   onSubmit = (e) => { 
+    
     e.preventDefault();
     this.setState(state => ({
       peepname: this.state.peepname,
@@ -33,14 +35,19 @@ class CreatePeep extends React.Component {
       
     }));
     console.log(this.state);
+    // let peep= this.state.peepname;
+
+    //now send user data to backend
+    //post reqest to send http request to local host. expect json body 
+    axios.post('http://localhost:5000/peeps/add', this.state)
+      .then(res=>console.log(res.data));
     
-   this.setState({
+    this.setState({
      peepname: ''
     })
      
-   
-
   }
+  
 
   render () {
     return (<div>

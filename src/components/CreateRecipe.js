@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from './Navbar';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import axios from 'axios';
 
 
 class CreateRecipe extends React.Component {
@@ -24,10 +25,21 @@ class CreateRecipe extends React.Component {
 
   //react life cycle method. React calls this at different points. This will be called before anything displays on the page. right before something loads, this code will load
   componentDidMount() {
-    this.setState({
-      peeps: ['test peep'],
-      peepname: 'test peep'
-    }); 
+    // this.setState({
+    //   peeps: ['test peep'],
+    //   peepname: 'test peep'
+    // }); 
+    //the above is COMMENTED OUT as now want to get the current users that have been added and have as drop down box
+    axios.get('http://localhost:5000/peeps')
+      .then(response => {
+        if (response.data.length > 0) {//checking there is at least one user 
+          this.setState({
+            //.map to only return peepname field
+            peeps: response.data.map(peep => peep.peepname),
+            peepname: response.data[0].username //username auto set to first user of database
+          })
+        }
+      })
   }
 
   //methods so can update state properties
@@ -35,6 +47,7 @@ class CreateRecipe extends React.Component {
     //we won't do this.state.username = "beau"
     this.setState({
       peepname: e.target.value //target is textbox. updates user name in the state
+      
     });
   }
 
@@ -70,13 +83,10 @@ class CreateRecipe extends React.Component {
     }));
     
     console.log(this.state);
-    // const recipe = {
-    //   peepname: this.state.peepname,
-    //   title: this.state.description,
-    //   url: this.state.url,
-    //   date: this.state.date
-    // }
-    // console.log(recipe)
+
+    axios.post('http://localhost:5000/recipes/add', this.state)
+      .then(res => console.log(res.data));
+  
     window.location = '/' //taking person back to home page - the list of exercises
     //console.log("hello")
 

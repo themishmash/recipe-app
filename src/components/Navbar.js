@@ -8,7 +8,7 @@ function Navbar ()
     <ul>
       <li><Link to='/'>Recipes</Link></li>
       <li><Link to='/create'>Create Recipe Item</Link></li>
-      <li><Link to='/user'>Create User</Link></li>
+      <li><Link to='/peep'>Create Peep</Link></li>
      
     </ul>
   </nav>

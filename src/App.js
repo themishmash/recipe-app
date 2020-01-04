@@ -14,7 +14,7 @@ function App() {
           <Route exact path="/" component={RecipesList} />
           <Route path="/edit/:id" component={EditRecipe} />
           <Route path="/create" component={CreateRecipe} />
-          <Route path="/user" component={CreatePeep} />
+          <Route path="/peep" component={CreatePeep} />
   
         </Switch>
       </BrowserRouter>
