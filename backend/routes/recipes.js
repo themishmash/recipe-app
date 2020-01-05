@@ -40,7 +40,7 @@ router.post('/add', (req, res)=> {
 
 });
 
-router.put('/update/:id', (req, res)=> {
+router.post('/update/:id', (req, res)=> {
   Recipe.findById(req.params.id)
     .then(recipe => {
       recipe.peepname = req.body.peepname;
