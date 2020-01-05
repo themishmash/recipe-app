@@ -3,7 +3,7 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: cornflowerblue;
+  background-color: #92D2CF;
 
 }
 
@@ -17,7 +17,7 @@ li a {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  color: white;
+  color: black;
 }
 
 nav {

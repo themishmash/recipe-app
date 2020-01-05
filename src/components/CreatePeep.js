@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from './Navbar';
 import axios from 'axios';
+import styles from './CreatePeep.module.css';
 
 // function CreatePeep ()
 // {
@@ -52,8 +53,9 @@ class CreatePeep extends React.Component {
   render () {
     return (<div>
       <div><Navbar /></div>
-      <h3>Create New Peep</h3>
-      <div className="container">
+      <h3 className={styles.createpeeph3}>Create New Peep</h3>
+      <div className={styles.createpeepcontainer}>
+        <div className={styles.peepformborder}>
         <form action="/action_page.php">
           <div className="row">
             <div className="col-25">
@@ -75,6 +77,7 @@ class CreatePeep extends React.Component {
             <button onClick={this.onSubmit} className="submit">Add Peep</button>
           </div>
         </form>
+      </div>
       </div>
     </div>)
   }

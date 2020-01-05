@@ -3,6 +3,7 @@ import Navbar from './Navbar';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from 'axios';
+import styles from './CreateRecipe.module.css';
 
 
 class CreateRecipe extends React.Component {
@@ -96,8 +97,10 @@ class CreateRecipe extends React.Component {
   render () {
     return (<div>
        <div><Navbar /></div>
-        <h3>Create New Recipe</h3>
-        <div className="container">
+        <h3 className={styles.h3createrecipe}>Create New Recipe</h3>
+        <div className={styles.abovecontainer}>
+        <div className={styles.container}>
+          <div className={styles.recipecontainer}>
           <form action="/action_page.php">
             <div className="row">
               <div className="col-25">
@@ -152,7 +155,7 @@ class CreateRecipe extends React.Component {
             <div className="row">
               <div className="col-25">
                 <label>Date</label>
-                <div>
+                <div className={styles.datebox}>
                   <DatePicker
                   selected={this.state.date}
                   onChange={this.onChangeDate}
@@ -166,6 +169,8 @@ class CreateRecipe extends React.Component {
             </div>
 
           </form>
+          </div>
+          </div>
         </div>
     </div>)
   }

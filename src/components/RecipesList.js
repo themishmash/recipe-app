@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from './Navbar';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import styles from "./RecipesList.module.css";
 
 
 //this file has two components in it 
@@ -80,9 +81,10 @@ class RecipesList extends React.Component {
 
 
   render () {
-    return (<div>
+    return (<div className={styles}>
       <div><Navbar /></div>
-      <h3>Current Recipes</h3>
+      <div className={styles.containerlist}>
+      <h3 className={styles.h3list}>Current Recipes</h3>
       <table>
         <thead>
           <tr>
@@ -96,7 +98,12 @@ class RecipesList extends React.Component {
           { this.recipeList() }
         </tbody>
       </table>
-
+      </div>
+      <div className={styles.imagecontainer}>
+      <div className={styles.imagelist}>
+      <img src="./cupcake.jpg" alt="cupcake" className={styles.responsive}width="800" height="400"></img>
+      </div>
+      </div>
     </div>)
   }
 }
