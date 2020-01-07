@@ -91,7 +91,7 @@ class EditRecipe extends React.Component {
     
     console.log(this.state);
 
-    axios.post('http://localhost:5000/recipes/update/' + this.props.match.params.id, this.state)
+    axios.put('http://localhost:5000/recipes/update/' + this.props.match.params.id, this.state)
       .then(res => console.log(res.data));
   
     window.location = '/' //taking person back to home page - the list of exercises

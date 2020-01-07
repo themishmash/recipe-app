@@ -27,7 +27,7 @@ class RecipesList extends React.Component {
   constructor(props) {
     super(props);
 
-    this.deleteRecipe = this.deleteRecipe.bind(this);
+    // this.deleteRecipe = this.deleteRecipe.bind(this);
 
     this.state = {recipes: []};
   }
@@ -47,7 +47,7 @@ class RecipesList extends React.Component {
       })
   }
 
-  deleteRecipe(id) {
+  deleteRecipe = (id) => {
     axios.delete('http://localhost:5000/recipes/'+id)
       .then(response => { console.log(response.data)});
       

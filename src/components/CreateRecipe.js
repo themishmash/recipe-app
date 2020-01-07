@@ -74,23 +74,28 @@ class CreateRecipe extends React.Component {
   //can create variables like const if only used within that method
   onSubmit = (e) => { 
     e.preventDefault();
+    this.props.history.push('/'); //goes back to home
+    window.location.reload(false); //page can reload after recipe item added
+
     this.setState(state => ({
       peepname: this.state.peepname,
       title: this.state.description,
       url: this.state.url,
       date: this.state.date
       
-      
     }));
     
     console.log(this.state);
 
     axios.post('http://localhost:5000/recipes/add', this.state)
-      .then(res => console.log(res.data));
-  
-    window.location = '/' //taking person back to home page - the list of exercises
-    //console.log("hello")
-
+      .then(res => {
+        console.log(res)
+        
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+      
   }
 
 
@@ -112,8 +117,10 @@ class CreateRecipe extends React.Component {
                 className="peep"
                 value={this.state.peepname}
                 onChange={this.onchangePeepname}>
+                <option value=''></option>
                 {
-                  this.state.peeps.map(function(peep) {
+                
+                  this.state.peeps.map(peep => {
                     return <option
                     key={peep}
                     value={peep}>{peep}
@@ -167,6 +174,7 @@ class CreateRecipe extends React.Component {
             <div className="row">
               <button onClick={this.onSubmit} className="submit" >Add recipe</button>
             </div>
+            
 
           </form>
           </div>
