@@ -38,6 +38,7 @@ class RecipesList extends React.Component {
     //   peepname: 'test peep'
     // }); 
     //the above is COMMENTED OUT as now want to get the current users that have been added and have as drop down box
+    console.log('herrerereeee')
     axios.get('http://localhost:5000/recipes/')
       .then(response => {
         this.setState({ recipes: response.data})

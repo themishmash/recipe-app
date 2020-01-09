@@ -43,6 +43,12 @@ class CreateRecipe extends React.Component {
       })
   }
 
+  onHandleChange = (e) => {
+    this.setState({
+      [e.target.id]: e.target.value
+    })
+  }
+
   //methods so can update state properties
   onchangePeepname = (e) => {
     //we won't do this.state.username = "beau"
@@ -74,9 +80,6 @@ class CreateRecipe extends React.Component {
   //can create variables like const if only used within that method
   onSubmit = (e) => { 
     e.preventDefault();
-    this.props.history.push('/'); //goes back to home
-    window.location.reload(false); //page can reload after recipe item added
-
     this.setState(state => ({
       peepname: this.state.peepname,
       title: this.state.description,
@@ -89,8 +92,8 @@ class CreateRecipe extends React.Component {
 
     axios.post('http://localhost:5000/recipes/add', this.state)
       .then(res => {
-        console.log(res)
-        
+        this.props.history.push('/'); //goes back to home
+        //window.location.reload(false); //page can reload after recipe item added
       })
       .catch((err) => {
         console.log(err)
