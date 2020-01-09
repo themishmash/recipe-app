@@ -108,7 +108,7 @@ class EditRecipe extends React.Component {
           <form action="/action_page.php">
             <div className="row">
               <div className="col-25">
-                <label>Peepname: </label>
+                <label>{this.state.peepname}</label>
               </div>
               <div className="col-75">
                 <select ref="peepInput"
